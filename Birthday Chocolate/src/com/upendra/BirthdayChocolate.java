@@ -17,10 +17,31 @@ public class BirthdayChocolate {
 
 	
 	// Complete the birthday function below.
-    static int birthday(List<Integer> s, int d, int m) {
+	static int birthday(List<Integer> s, int d, int m) {
+		int n = s.size();
+		if (m > n) {
+			return 0;
+		}
+		int counter = 0;
+		int acc = 0;
+		for (int i = 0; i < m; i++) {
+			acc += s.get(i);
+		}
+		for (int i = m; i < n; i++) {
+			if (acc == d) {
+				counter++;
+			}
+			acc += s.get(i);
+			acc -= s.get(i - m);
+		}
 
+		if (acc == d) {
+			counter++;
+		}
 
-    }
+		return counter;
+
+	}
 	/**
 	 * @param args
 	 */
